@@ -18,4 +18,4 @@ gt_images/
 *.zip
 !.gitkeep
 !test_logs/WFLW_HIH_04_16_20_55_12.log
-Best/WFLW/*
+Best/WFLW/WFLW.pth
