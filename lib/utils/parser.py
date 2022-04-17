@@ -74,7 +74,6 @@ def inference_parser_args():
     parser.add_argument('--resume_checkpoint',type=str,required=True,help="the file path for resume checkpoint")
     parser.add_argument('--test_folder',type=str,default='test',help="Test which test folder, one subset or fullset")
     parser.add_argument('--gpu_id',type=int,default=None)
-    # parser.add_argument('--transformer',action='store_true',default=False,help='use transformer or not') # TODO delete
     parser.add_argument('--inference_indice',type=int,default=-1,help="The index of stacked output, default is last one")
 
     args, unparsed = parser.parse_known_args()

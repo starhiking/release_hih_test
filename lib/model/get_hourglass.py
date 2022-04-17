@@ -374,27 +374,6 @@ class StackedHourGlass(nn.Module):
 
         return last_output,last_offset
         
-        #  TODO delete leaved code
-        x = self.pre_conv(x)
-        preds = None
-        offset = None
-
-        for i in range(self.config.num_stack):
-            hg = eval('self.hg'+str(i))(x)
-            ll = eval('self.hg'+str(i)+'_res1')(hg)
-            feature = eval('self.hg'+str(i)+'_lin1')(ll)
-            preds = eval('self.hg'+str(i)+'_conv_pred')(feature)
-
-            if self.offset_func is not None and i == self.config.num_stack-1:
-                offset = eval('self.offset_'+str(i))(x,hg,preds)
-
-            if i < self.config.num_stack - 1:
-                merge_feature = eval('self.hg'+str(i)+'_conv1')(feature)
-                merge_preds = eval('self.hg'+ str(i)+'_conv2')(preds)
-                x = x+merge_feature+merge_preds
-        
-        # preds size: n_batch,n_landmark,heatmap_size,heatmap_size
-        return preds,offset
 
     def init_weights(self,pretrained=''):
         for m in self.modules():
